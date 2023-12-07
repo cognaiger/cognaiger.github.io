@@ -5,7 +5,14 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: ShellCheck
         uses: ludeeus/action-shellcheck@2.0.0
         with:
           format: json
+      - name: Run prose-lint on md file
+        run: |
+          proselint $(ls | grep .md$)
+      - name: Run write-good on md file
+        run: |
+          write-good *.md
