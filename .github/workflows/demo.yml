@@ -12,7 +12,9 @@ jobs:
           format: json
       - name: Run prose-lint on md file
         run: |
+          pip install proselint
           proselint $(ls | grep .md$)
       - name: Run write-good on md file
         run: |
+          npm install -g write-good
           write-good *.md
